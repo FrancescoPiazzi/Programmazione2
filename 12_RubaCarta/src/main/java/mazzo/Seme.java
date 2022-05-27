@@ -20,5 +20,5 @@ public enum Seme {
     PICCHE{
         @Override
         public String toString() { return "P";}
-    };
+    }
 }

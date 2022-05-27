@@ -1,6 +1,6 @@
 module javafxtemplate {
     requires javafx.controls;
-    requires javafx.fxml;
+    requires javafx.base;
 
 
     opens javafxtemplate to javafx.fxml;

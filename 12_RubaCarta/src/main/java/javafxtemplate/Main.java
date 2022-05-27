@@ -37,7 +37,7 @@ public class Main extends Application {
 
         GameController controller = new GameController(this);
         initCards();
-        inithandlers(controller);
+        initHandlers(controller);
 
         controller.startGame();
     }
@@ -81,7 +81,7 @@ public class Main extends Application {
         mano2 = new Mano(mano2Container, mazzo);
     }
 
-    private void inithandlers(GameController controller){
+    private void initHandlers(GameController controller){
         btnPescaAvversario1.addEventHandler(ActionEvent.ACTION, new RubaCartaHandler(mano1, mano2, controller));
         btnPescaAvversario2.addEventHandler(ActionEvent.ACTION, new RubaCartaHandler(mano2, mano1, controller));
         btnScartaCoppie1.addEventHandler(ActionEvent.ACTION, new ScartaCoppieHandler(mano1, btnPescaMazzo1, controller));

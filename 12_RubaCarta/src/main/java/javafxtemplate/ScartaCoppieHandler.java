@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import mazzo.Mano;
 
 public class ScartaCoppieHandler extends BottoneHandler implements EventHandler<ActionEvent> {
-    Button bottonePesca;
+    final Button bottonePesca;
 
     ScartaCoppieHandler(Mano mano, Button bottonePesca, GameController controller){
         super(mano, controller);

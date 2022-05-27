@@ -29,6 +29,11 @@ public class Mazzo extends ArrayList<Carta> {
     }
 
     @Override
+    public Mazzo clone(){
+        return (Mazzo)super.clone();
+    }
+
+    @Override
     public String toString(){
         StringBuilder s = new StringBuilder();
         for(Carta c : this)

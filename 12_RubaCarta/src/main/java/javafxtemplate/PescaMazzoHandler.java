@@ -6,7 +6,7 @@ import mazzo.Mano;
 import mazzo.Mazzo;
 
 public class PescaMazzoHandler extends BottoneHandler implements EventHandler<ActionEvent> {
-    Mazzo mazzo;
+    final Mazzo mazzo;
 
     PescaMazzoHandler(Mano mano, Mazzo mazzo, GameController controller){
         super(mano, controller);

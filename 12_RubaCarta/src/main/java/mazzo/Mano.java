@@ -26,7 +26,7 @@ public class Mano extends Mazzo{
         updateMazzoVisuale();
     }
 
-    // mi consente di creare mani "virtuali" usato ad es. per scartare le coppie
+    // Mi consente di creare mani "virtuali" usato ad es. per scartare le coppie
     private Mano(){ }
 
     @Override
