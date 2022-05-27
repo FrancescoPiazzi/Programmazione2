@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import mazzo.Mano;
 
 public class RubaCartaHandler extends BottoneHandler implements EventHandler<ActionEvent> {
-    Mano manoAvversario;
+    final Mano manoAvversario;
 
     RubaCartaHandler(Mano mano, Mano manoAvversario, GameController controller){
         super(mano, controller);

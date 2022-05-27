@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 public class GameController {
-    Main main;
+    final Main main;
     Giocatore turno;
 
     GameController(Main main){

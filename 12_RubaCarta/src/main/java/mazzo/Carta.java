@@ -1,8 +1,8 @@
 package mazzo;
 
 public class Carta implements Comparable<Carta> {
-    Seme seme;
-    int numero;
+    final Seme seme;
+    final int numero;
 
     public Carta(Seme seme, int numero){
         this.seme = seme;
