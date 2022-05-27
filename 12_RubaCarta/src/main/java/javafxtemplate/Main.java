@@ -19,8 +19,8 @@ public class Main extends Application {
     static final String SCARTA_COPPIE = "Cerca le coppie";
     static final String PESCA_MAZZO = "Pesca dal mazzo";
 
-    static final String USERNAME_1 = "PIPPO";
-    static final String USERNAME_2 = "PAPERINO";
+    final String USERNAME_1 = "PIPPO";
+    final String USERNAME_2 = "PAPERINO";
 
     Button btnPescaAvversario1, btnPescaAvversario2;
     Button btnScartaCoppie1, btnScartaCoppie2;

@@ -12,12 +12,7 @@ public class Carta implements Comparable<Carta> {
     @Override
     public boolean equals(Object o){
         if(o instanceof Carta) {
-            // regola inventata: il blackjack è un jolly e matcha qualunque carta
-            // fatto perchè altrimenti chi ha il blackjack non vincerà mai se l'altro lo sa
-            if(this.seme == Seme.BLACKJACK || ((Carta)o).seme == Seme.BLACKJACK)
-                return true;
-            else
-                return this.numero == ((Carta)o).numero;
+            return this.numero == ((Carta)o).numero;
         }
         else
             return false;

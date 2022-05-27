@@ -1,5 +1,8 @@
 package javafxtemplate;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 public class GameController {
     Main main;
     Giocatore turno;
@@ -15,11 +18,11 @@ public class GameController {
 
     void endGame(){
         disableAll();
-        if(turno == Giocatore.GIOCATORE_1)
-            System.out.print(Main.USERNAME_1);
-        else
-            System.out.print(Main.USERNAME_2);
-        System.out.println(" ha vinto");
+        String winningPlayer = turno == Giocatore.GIOCATORE_1 ? main.USERNAME_1 : main.USERNAME_2;
+        String message = winningPlayer + " ha vinto!";
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
+        alert.showAndWait();
     }
 
     void pickPhase(){

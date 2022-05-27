@@ -6,9 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafxtemplate.GameController;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -19,45 +18,51 @@ public class Mano extends Mazzo{
     HBox mazzoVisuale;
 
     public Mano(HBox mazzoVisuale, Mazzo mazzo){
-        for(int i=0; i<STARTING_CARDS; i++)
-            this.carte.add(mazzo.pickFirst());
-
         this.mazzoVisuale = mazzoVisuale;
+
+        for(int i=0; i<STARTING_CARDS; i++)
+            this.add(mazzo.pickFirst());
 
         updateMazzoVisuale();
     }
 
-    public void add(Carta c){
-        carte.add(c);
+    // mi consente di creare mani "virtuali" usato ad es. per scartare le coppie
+    private Mano(){ }
+
+    @Override
+    public boolean add(Carta c){
+        boolean addResult = super.add(c);
         this.sort();
         updateMazzoVisuale();
+        return addResult;
     }
 
     public Carta removeRandom(){
-        int n = new Random().nextInt(carte.size());
-        Carta c = carte.get(n);
-        carte.remove(n);
+        int n = new Random().nextInt(this.size());
+        Carta c = this.get(n);
+        this.remove(n);
         updateMazzoVisuale();
         return c;
     }
 
     public boolean scartaCoppie(){
-        ArrayList<Carta> carteSenzaCoppie = new ArrayList<>();
+        Mano carteSenzaCoppie = new Mano();
 
-        for(int i=0; i<carte.size(); i++){
+        for(int i=0; i<this.size(); i++){
             boolean coppia = false;
-            for(int j=0; j<carte.size(); j++){
-                if(i!=j && carte.get(i).equals(carte.get(j))){
+            for(int j=0; j<this.size(); j++){
+                if(i!=j && this.get(i).equals(this.get(j))){
                     coppia = true;
                     break;
                 }
             }
             if(!coppia)
-                carteSenzaCoppie.add(carte.get(i));
+                carteSenzaCoppie.add(this.get(i));
         }
 
-        if(carteSenzaCoppie.size() < carte.size()){
-            carte = carteSenzaCoppie;
+        if(carteSenzaCoppie.size() < this.size()){
+            this.clear();
+            this.addAll(carteSenzaCoppie);
             updateMazzoVisuale();
             return true;
         }
@@ -66,8 +71,13 @@ public class Mano extends Mazzo{
     }
 
     private void updateMazzoVisuale(){
-        mazzoVisuale.getChildren().remove(0, mazzoVisuale.getChildren().size());
-        carte.forEach(carta -> {
+        if(mazzoVisuale == null) {
+            System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
+            return;
+        }
+
+        mazzoVisuale.getChildren().clear();
+        this.forEach(carta -> {
             StackPane container = new StackPane();
 
             Rectangle r = new Rectangle(SIZE, SIZE, Color.LIGHTBLUE);
