@@ -3,8 +3,8 @@ package javafxtemplate;
 import java.util.ArrayList;
 
 public abstract class QuadratoRigaColonna extends Quadrato{
-    ArrayList<QuadratoInGriglia> array;
-    Main main;
+    final ArrayList<QuadratoInGriglia> array;
+    final Main main;
 
     QuadratoRigaColonna(ArrayList<QuadratoInGriglia> array, Main main){
         this.array = array;
