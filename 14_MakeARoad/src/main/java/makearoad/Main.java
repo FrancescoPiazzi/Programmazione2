@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
+// tempo impiegato: 4:00 hr
 public class Main extends Application {
     GridController gridController;
     TerrainController terrainController;
