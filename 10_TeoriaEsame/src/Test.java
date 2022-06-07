@@ -1,20 +1,26 @@
-import java.util.*;
 public class Test {
     public static void main(String[] args) {
-        A[] a = new A[4];
-        for (int i = 0; i < a.length; i++) {
-            if (i%2 != 0) a[i]= new A(i);
-            else a[i]= new B(i);
-        }
-        List<A> l = new ArrayList<>(Arrays.asList(a));
-        for(A e: l) System.out.print(e.x /*e.m(5)*/ + " ");
+        A a = new B();
+        B b = new B();
+        J j = b;
+        if (a.equals(b))
+            System.out.println(j.m(1) + b.m("scritto"));
+        else System.out.println(j.m(3));
     }
 }
-class A {
-    int x;
-    A(int x) { this.x = x + 1; System.out.println("-> " + this.x);}
-    public int m(int z) { return x + z; }
+interface I {
+    int m(int z);
 }
-class B extends A {
-    B(int x) { super(x); this.x = x + 2; System.out.println("--> " + this.x);}
+interface J extends I {}
+
+class A implements I {
+    int x = 10;
+    public int m(int z) { return x + z; }
+    public boolean equals(Object o) {
+        A obj = (A) o;
+        return x == obj.x;
+    }
+}
+class B extends A implements J {
+    public int m(String s) { return s.length(); }
 }
